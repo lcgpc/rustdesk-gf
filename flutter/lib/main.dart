@@ -287,13 +287,11 @@ void runConnectionManagerScreen() async {
     const DesktopServerPage(),
     MyTheme.currentThemeMode(),
   );
-  // 强制隐藏连接管理窗口
+// 强制隐藏连接管理窗口
   gFFI.serverModel.hideCm = true;
   await hideCmWindow(isStartup: true);
   setResizable(false);
   listenUniLinks(handleByFlutter: false);
-}
-
 }
 
 bool _isCmReadyToShow = false;
