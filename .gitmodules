@@ -1,3 +1,4 @@
 
 [submodule "libs/hbb_common"]
 	url = https://github.com/lcgpc/hbb_common-gf.git
+	path = libs/hbb_common
