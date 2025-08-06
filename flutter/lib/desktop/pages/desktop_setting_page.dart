@@ -461,7 +461,9 @@ class _GeneralState extends State<_General> {
       Obx(() => _Button('Install', () {
             () async {
               serviceBtnEnabled.value = false;
-              await bind.mainInstall();
+              // 直接使用 mainGotoInstall 方法
+              //bind.mainGotoInstall();
+              bind.mainGotoSilentInstall(); //自訂模組
               // enable the button after 1 second
               Future.delayed(const Duration(seconds: 1), () {
                 serviceBtnEnabled.value = true;
