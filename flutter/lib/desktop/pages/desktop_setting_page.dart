@@ -77,7 +77,7 @@ class DesktopSettingPage extends StatefulWidget {
       SettingsTabKey.plugin,
     if (!bind.isDisableAccount()) SettingsTabKey.account,
     if (isWindows &&
-        bind.mainGetBuildinOption(key: kOptionHideRemotePrinterSetting) != 'Y')
+        bind.mainGetHardOption(key: kOptionHideRemotePrinterSetting) != 'Y')
       SettingsTabKey.printer,
     SettingsTabKey.about,
   ];
@@ -458,10 +458,10 @@ class _GeneralState extends State<_General> {
     }
 
     return _Card(title: 'Service', children: [
-      Obx(() => _Button(serviceStop.value ? 'Start' : 'Stop', () {
+      Obx(() => _Button('Install', () {
             () async {
               serviceBtnEnabled.value = false;
-              await start_service(serviceStop.value);
+              await bind.mainInstall();
               // enable the button after 1 second
               Future.delayed(const Duration(seconds: 1), () {
                 serviceBtnEnabled.value = true;
@@ -2223,7 +2223,7 @@ class _AboutState extends State<_About> {
                         .marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com/privacy.html');
+                    launchUrlString('https://www.superstarktv.com.tw/QA');
                   },
                   child: Text(
                     translate('Privacy Statement'),
@@ -2231,7 +2231,7 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com');
+                    launchUrlString('https://www.superstarktv.com.tw/');
                   },
                   child: Text(
                     translate('Website'),

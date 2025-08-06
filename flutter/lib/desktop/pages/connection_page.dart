@@ -41,7 +41,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
   double? get height => bind.isIncomingOnly() ? null : em * 3;
 
   void onUsePublicServerGuide() {
-    const url = "https://rustdesk.com/pricing";
+    const url = "https://www.superstarktv.com.tw/";
     canLaunchUrlString(url).then((can) {
       if (can) {
         launchUrlString(url);
@@ -312,6 +312,11 @@ class _ConnectionPageState extends State<ConnectionPage>
             Row(
               children: [
                 Flexible(child: _buildRemoteIDTextField(context)),
+                SizedBox(width: 8), // 讓圖片和輸入框有間距
+                Image.asset(
+                  'assets/ktvlogo.png',
+                  height: 128, // 可依需求調整
+                ),
               ],
             ).marginOnly(top: 22),
             SizedBox(height: 12),

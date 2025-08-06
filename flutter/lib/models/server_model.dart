@@ -577,12 +577,14 @@ class ServerModel with ChangeNotifier {
         _clients.removeAt(index_disconnected);
         tabController.remove(index_disconnected);
       }
-      if (desktopType == DesktopType.cm && !hideCm) {
-        showCmWindow();
-      }
+      // 註釋掉顯示連接管理窗口的邏輯
+      //if (desktopType == DesktopType.cm && !hideCm) {
+      //  showCmWindow();
+      //}
       scrollToBottom();
       notifyListeners();
-      if (isAndroid && !client.authorized) showLoginDialog(client);
+      // 註釋掉顯示登錄對話框的邏輯
+      //if (isAndroid && !client.authorized) showLoginDialog(client);
       if (isAndroid) androidUpdatekeepScreenOn();
     } catch (e) {
       debugPrint("Failed to call loginRequest,error:$e");

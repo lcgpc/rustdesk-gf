@@ -2032,6 +2032,12 @@ pub fn main_goto_install() -> SyncReturn<bool> {
     SyncReturn(true)
 }
 
+// 新增靜默安裝 FFI 函數
+pub fn main_goto_silent_install() -> SyncReturn<bool> {
+    goto_silent_install();
+    SyncReturn(true)
+}
+
 pub fn main_get_new_version() -> SyncReturn<String> {
     SyncReturn(get_new_version())
 }
