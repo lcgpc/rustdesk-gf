@@ -132,6 +132,27 @@ Future<void> initEnv(String appType) async {
   updateSystemWindowTheme();
 }
 
+// 添加新函數
+Future<void> _initializeDefaultServerConfig() async {
+  try {
+    // 檢查是否已有自定義服務器配置
+    final currentIdServer = await bind.mainGetOption(key: 'custom-rendezvous-server');
+    final currentRelayServer = await bind.mainGetOption(key: 'relay-server');
+    
+    // 僅在配置為空時設置默認值
+    if (currentIdServer.isEmpty) {
+      await bind.mainSetOption(key: 'custom-rendezvous-server', value: 'ktv.net.dnsnet.cc');
+    }
+    if (currentRelayServer.isEmpty) {
+      await bind.mainSetOption(key: 'relay-server', value: 'ktv.net.dnsnet.cc');
+    }
+    
+    debugPrint('Default server configuration initialized');
+  } catch (e) {
+    debugPrint('Failed to initialize default server config: $e');
+  }
+}
+
 void runMainApp(bool startService) async {
   // register uni links
   await initEnv(kAppTypeMain);

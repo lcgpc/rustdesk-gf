@@ -2780,10 +2780,10 @@ class ServerConfig {
 
   /// from local options
   ServerConfig.fromOptions(Map<String, dynamic> options)
-      : idServer = options['custom-rendezvous-server'] ?? "ktv.net.dnsnet.cc", // 設置預設值
-        relayServer = options['relay-server'] ?? "ktv.net.dnsnet.cc", // 設置預設值
+      : idServer = options['custom-rendezvous-server'] ?? "", // 設置預設值
+        relayServer = options['relay-server'] ?? "", // 設置預設值
         apiServer = options['api-server'] ?? "",
-        key = options['key'] ?? "sjyzZqN08tYi4Kjcv6FgYLXIpHa5xDVDGWEXh3T6WZ0="; // 設置預設值
+        key = options['key'] ?? ""; // 設置預設值
 }
 
 Widget dialogButton(String text,
