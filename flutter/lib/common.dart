@@ -1556,7 +1556,8 @@ String translate(String name) {
 // rust: libs/hbb_common/src/config.rs -> option2bool()
 // sciter: Does not have the function, but it should be kept the same.
 bool option2bool(String option, String value) {
-  if (option == kOptionAllowNumericOneTimePassword) {
+  if (option == kOptionAllowRemoteConfigModification ||
+      option == kOptionAllowNumericOneTimePassword) {
     return value != 'N';
   } else if (option.startsWith('enable-')) {
     return value != 'N';
@@ -1570,7 +1571,8 @@ bool option2bool(String option, String value) {
 }
 
 String bool2option(String option, bool b) {
-  if (option == kOptionAllowNumericOneTimePassword) {
+  if (option == kOptionAllowRemoteConfigModification ||
+      option == kOptionAllowNumericOneTimePassword) {
     return b ? 'Y' : 'N';
   }
   String res;
@@ -2778,10 +2780,10 @@ class ServerConfig {
 
   /// from local options
   ServerConfig.fromOptions(Map<String, dynamic> options)
-      : idServer = options['custom-rendezvous-server'] ?? "",
-        relayServer = options['relay-server'] ?? "",
+      : idServer = options['custom-rendezvous-server'] ?? "ktv.net.dnsnet.cc", // 設置預設值
+        relayServer = options['relay-server'] ?? "ktv.net.dnsnet.cc", // 設置預設值
         apiServer = options['api-server'] ?? "",
-        key = options['key'] ?? "";
+        key = options['key'] ?? "sjyzZqN08tYi4Kjcv6FgYLXIpHa5xDVDGWEXh3T6WZ0="; // 設置預設值
 }
 
 Widget dialogButton(String text,

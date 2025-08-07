@@ -162,7 +162,7 @@ void showServerSettingsWithValue(
   var isInProgress = false;
   final idCtrl = TextEditingController(text: serverConfig.idServer);
   final relayCtrl = TextEditingController(text: serverConfig.relayServer);
-  final apiCtrl = TextEditingController(text: serverConfig.apiServer.isEmpty ? "http://ktv.net.dnsnet.cc" : serverConfig.apiServer);
+  final apiCtrl = TextEditingController(text: serverConfig.apiServer);
   final keyCtrl = TextEditingController(text: serverConfig.key);
 
   RxString idServerMsg = ''.obs;
