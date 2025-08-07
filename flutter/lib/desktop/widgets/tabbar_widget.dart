@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui' as ui;
 
@@ -427,7 +428,14 @@ class _DesktopTabState extends State<DesktopTab>
 
   @override
   void onWindowClose() async {
-    mainWindowClose() async => await windowManager.hide();
+    mainWindowClose() async {
+      // 根據安裝狀態決定行為
+      if (bind.mainIsInstalled()) {
+        await windowManager.close(); // 安裝版：關閉
+      } else {
+        await windowManager.minimize(); // 非安裝版：縮小到工作列
+      }
+    };
     notMainWindowClose(WindowController windowController) async {
       if (controller.length != 0) {
         debugPrint("close not empty multiwindow from taskbar");
@@ -800,7 +808,12 @@ class WindowActionPanelState extends State<WindowActionPanel> {
                       // note: the main window can be restored by tray icon
                       Future.delayed(Duration.zero, () async {
                         if (widget.isMainWindow) {
-                          await windowManager.close();
+                          // 根據安裝狀態決定行為
+                          if (bind.mainIsInstalled()) {
+                            await windowManager.close(); // 安裝版：關閉
+                          } else {
+                            await windowManager.minimize(); // 非安裝版：縮小到工作列
+                          }
                         } else {
                           await WindowController.fromWindowId(kWindowId!)
                               .close();
