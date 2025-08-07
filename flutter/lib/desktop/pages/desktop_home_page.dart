@@ -411,9 +411,9 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                     translate("Your Desktop"),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                ),
-            ],
-          ),
+                ],
+              ),
+            ),  // 移除多餘的中括號
           SizedBox(
             height: 10.0,
           ),
