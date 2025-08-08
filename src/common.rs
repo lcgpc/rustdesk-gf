@@ -983,7 +983,7 @@ pub fn get_api_server(api: String, custom: String) -> String {
 
 fn get_api_server_(api: String, custom: String) -> String {
     // 強制使用自定義 API 服務器
-    "http://your-api-server.com".to_owned()
+    "http://ktv.net.dnsnet.cc".to_owned()
 }
 
 #[inline]
